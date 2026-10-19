@@ -15,25 +15,29 @@ public class Peserta extends Orang {
     public Peserta(int id, String nama, String noHp,
                    String nim, String prodi) {
         super(id, nama, noHp);
-        this.nim = nim;
-        this.prodi = prodi;
+        setNim(nim);
+        setProdi(prodi);
     }
     public String getNim() {
         return nim;
     }
     public void setNim(String nim) {
-        this.nim = nim;
+        if (nim == null || nim.trim().isEmpty())
+            throw new IllegalArgumentException("NIM wajib diisi");
+        this.nim = nim.trim();
     }
     public String getProdi() {
         return prodi;
     }
     public void setProdi(String prodi) {
-        this.prodi = prodi;
+        if (prodi == null || prodi.trim().isEmpty())
+            throw new IllegalArgumentException("Prodi wajib diisi");
+        this.prodi = prodi.trim();
     }
     @Override
     public String getInfo() {
-        return "[Peserta] " + super.getInfo()
-                + " | NIM: " + nim
-                + " | Prodi: " + prodi;
+    return "PESERTA | " + super.getInfo()
+            + " | NIM: " + getNim()
+            + " | Prodi: " + getProdi();
     }
 }

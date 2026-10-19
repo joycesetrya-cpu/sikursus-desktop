@@ -20,11 +20,13 @@ public class Instruktur extends Orang {
         return keahlian;
     }
     public void setKeahlian(String keahlian) {
-        this.keahlian = keahlian;
+        if (keahlian == null || keahlian.trim().isEmpty())
+            throw new IllegalArgumentException("Keahlian wajib diisi");
+        this.keahlian = keahlian.trim();
     }
     @Override
     public String getInfo() {
-        return "[Instruktur] " + super.getInfo()
-                + " | Keahlian: " + keahlian;
+    return "INSTRUKTUR | " + super.getInfo()
+            + " | Keahlian: " + getKeahlian();
     }
 }
